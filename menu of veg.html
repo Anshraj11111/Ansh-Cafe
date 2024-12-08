@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- FontAwesome CDN -->
+    <style>
+        body {
+            background-image: url("https://tourist-images-prd-s3.s3.eu-west-1.amazonaws.com/ipd863rxx7adkf8g3zypv0j0nfg2");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 180%;
+            animation: zoomInOut 10s infinite ease-in-out;
+        }
+
+        @keyframes zoomInOut {
+            0%,
+            100% {
+                background-size: 100%;
+            }
+
+            50% {
+                background-size: 110%;
+            }
+        }
+
+        .heading {
+            text-align: center;
+            color: #fff;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .heading span {
+            color: #f39c12;
+        }
+
+        .menu .box {
+            height: 50vh;
+            width: 50vw;
+            background: #222;
+            border: 2px solid #444;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: background 0.3s ease, border-color 0.3s ease;
+            margin-bottom: 3rem; /* Increased space between items */
+        }
+
+        .menu .box img {
+            height: 200px; /* Increased height */
+            width: 100%; /* Make image fill the container */
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .menu .box h3 {
+            color: #f39c12;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .menu .box .price {
+            color: #fff;
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+
+        .menu .box:hover {
+            background: #fff;
+            color: #000;
+            border-color: #f39c12;
+        }
+
+        .menu .box:hover .price {
+            color: #000;
+        }
+
+        .menu .box .btn {
+            background-color: #f39c12;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu .box .btn:hover {
+            background-color: #e67e22;
+        }
+
+        * {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            transition: 0.3s linear;
+        }
+
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-padding-top: 9rem;
+            scroll-behavior: smooth;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 7%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .header .logo img {
+            height: 6rem;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .navbar a {
+            font-size: 1.6rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            color: rgb(239, 226, 205);
+            border-bottom: 0.2rem solid aliceblue;
+            padding-bottom: 0.5rem;
+        }
+
+        .icons {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .icons div {
+            color: #fff;
+            cursor: pointer;
+            font-size: 2.5rem;
+        }
+
+        .icons div:hover {
+            color: rgb(239, 226, 205);
+        }
+
+        #menu-btn {
+            display: none;
+        }
+
+        .nav-search {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            width: 400px;
+            height: 40px;
+            border-radius: 5px;
+            margin: 0 1rem;
+        }
+
+        .search-list {
+            background-color: #f3f3f3;
+            width: 40px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .search-input {
+            width: 100%;
+            font-size: larger;
+            border: none;
+        }
+
+        .search-icon {
+            width: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: larger;
+            color: #0f1111;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .nav-search:hover {
+            border: 2px solid orange;
+        }
+
+        .heading {
+            text-align: center;
+            color: #fff;
+            text-transform: uppercase;
+            padding-bottom: 3.5rem;
+            font-size: 4rem;
+        }
+
+        h1 {
+            margin-top: 120px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 4.5rem;
+            color: antiquewhite;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center; /* Center the items horizontally */
+            gap: 8rem; /* Increased gap between items */
+            margin: 0; /* Removed margin to align with grid system */
+        }
+
+        .col-sm-12, .col-md-6, .col-lg-4, .col-xl-3 {
+            display: flex;
+            justify-content: center; /* Center items within each column */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <a href="#" class="logo">
+                <img src="anshcafeimage.jpg" alt="Logo">
+            </a>
+            <nav class="navbar">
+                <a href="ansh cafe .html">Home</a>
+                <a href="about.html">About</a>
+                <a href="Menu.html">Menu</a>
+                <a href="product.html">Product</a>
+                <a href="contact..html">Contact</a>
+                <a href="review.html">Review</a>
+            
+            </nav>
+            <div class="nav-search">
+                <select class="search-list">
+                    <option>All</option>
+                </select>
+                <input placeholder="Search" class="search-input">
+                <div class="search-icon">
+                    <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="icons">
+                <div class="fas fa-search" id="search-btn"></div>
+                <a href="cart.html">
+                    <div class="fas fa-shopping-cart" id="cart-btn"></div>
+                </a>
+                <div class="fas fa-bars" id="menu-btn"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="menu" id="menu">
+        <h1>OUR MENU</h1> <br>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="box">
+                        <img src="https://e7.pngegg.com/pngimages/425/710/png-clipart-indian-thali-plate-vegetarian-cuisine-indian-cuisine-punjabi-cuisine-dal-baati-ugadi-food-plate.png" alt="Dish 1">
+                        <h3>Tasty and Healthy</h3>
+                        <div class="price">$445.99</div>
+                        <button class="btn">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="box">
+                        <img src="https://th.bing.com/th/id/OIP.fe2rgvPzlStO9JvcS9mMpgAAAA?rs=1&pid=ImgDetMain" alt="Dish 2">
+                        <h3>Tasty and Healthy</h3>
+                        <div class="price">$445.99</div>
+                        <button class="btn">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="box">
+                        <img src="https://img.freepik.com/premium-psd/indian-cuisine-isolated-transparent-background_191095-41645.jpg" alt="Dish 3">
+                        <h3>Tasty and Healthy</h3>
+                        <div class="price">$445.99</div>
+                        <button class="btn">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="box">
+                        <img src="https://i.pinimg.com/736x/45/3e/f9/453ef906e6e699d8fe990ac5d443a065.jpg" alt="Dish 4">
+                        <h3>Tasty and Healthy</h3>
+                        <div class="price">$445.99</div>
+                        <button class="btn">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="box">
+                        <img src="https://th.bing.com/th/id/OIP.dw4Ae58fNg9kp3qv7wT4dAHaHq?w=840&h=870&rs=1&pid=ImgDetMain" alt="Dish 5">
+                        <h3>Tasty and Healthy</h3>
+                        <div class="price">$445.99</div>
+                        <button class="btn">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="box">
+                        <img src="https://images.rawpixel.com/image_png_600/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTExL3Jhd3BpeGVsb2ZmaWNlMTlfYV9pbmRpYW5fbWVhbF90cmF5X19oaW50X29mX2ZsYXRsYXlfb2JqZWN0X191c18wY2U2NGE5YS04YzVjLTRkMDctYTE0MS01MTBlODlhZGU0ODEucG5n.png" alt="Dish 6">
+                        <h3>Tasty and Healthy</h3>
+                        <div class="price">$445.99</div>
+                        <button class="btn">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="box">
+                        <img src="https://img.freepik.com/premium-psd/indian-food-indian-food-thali-north-indian-thali_932730-1485.jpg" alt="Dish 7">
+                        <h3>Tasty and Healthy</h3>
+                        <div class="price">$445.99</div>
+                        <button class="btn">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="box">
+                        <img src="https://img.freepik.com/premium-psd/indian-cuisine-isolated-transparent-background_1085577-38921.jpg" alt="Dish 8">
+                        <h3>Tasty and Healthy</h3>
+                        <div class="price">$445.99</div>
+                        <button class="btn">Add To Cart</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="box">
+                        <img src="https://thumbs.dreamstime.com/b/fresh-organic-fruits-vegetables-cotton-eco-bags-zero-waste-concept-flat-lay-145140153.jpg" alt="Dish 9">
+                        <h3>Tasty and Healthy</h3>
+                        <div class="price">$445.99</div>
+                        <button class="btn">Add To Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+

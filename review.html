@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Food</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-image: url("https://tourist-images-prd-s3.s3.eu-west-1.amazonaws.com/ipd863rxx7adkf8g3zypv0j0nfg2");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 180%;
+            animation: zoomInOut 10s infinite ease-in-out;
+        }
+
+        @keyframes zoomInOut {
+            0%,
+            100% {
+                background-size: 100%;
+            }
+
+            50% {
+                background-size: 110%;
+            }
+        }
+
+        .heading {
+            text-align: center;
+            margin: 30px;
+            padding: 20px;
+            color: #fff;
+            font-size: 5rem; /* Increased font size */
+        }
+
+        .review .box {
+            text-align: center;
+            border: 2px solid #444;
+            height: 500px; /* Set specific height */
+            width: 100%; /* Set width to full within the column */
+            max-width: 300px; /* Limit width of each box */
+            margin: 10px;
+            background-color: #222;
+            border-radius: 15px;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.7); /* Added slight transparency */
+        }
+
+        .review .box .image img {
+            width: 100%;
+            height: auto; /* Adjusted height to auto for better image scaling */
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .review .box p {
+            font-size: 1.9rem; /* Increased font size */
+            line-height: 1.5;
+            color: #fff;
+            padding: 1rem 0;
+        }
+
+        .review .box .user {
+            height: 10vh;
+            width: 15vw;
+            border-radius: 50%;
+            object-fit: contain;
+            margin: 10px;
+        }
+
+        .review .box h3 {
+            padding: 1rem 0;
+            font-size: 2rem; /* Increased font size */
+            color: #fff;
+        }
+
+        .review .box .stars i {
+            font-size: 2.5rem; /* Increased star size */
+            color: #ffd700;
+        }
+
+        .review .box .price {
+            font-size: 1.9rem; /* Increased font size */
+            color: #ffd700;
+        }
+
+        .review .box .price span {
+            text-decoration: line-through;
+            color: #1b1818;
+        }
+
+        * {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            transition: 0.3s linear;
+        }
+
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-padding-top: 9rem;
+            scroll-behavior: smooth;
+        }
+        .span{
+            color: #fff;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 7%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .header .logo img {
+            height: 6rem;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .navbar a {
+            font-size: 1.6rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            color: rgb(239, 226, 205);
+            border-bottom: 0.2rem solid aliceblue;
+            padding-bottom: 0.5rem;
+        }
+
+        .icons {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .icons div {
+            color: #fff;
+            cursor: pointer;
+            font-size: 2.5rem;
+        }
+
+        .icons div:hover {
+            color: rgb(239, 226, 205);
+        }
+
+        #menu-btn {
+            display: none;
+        }
+
+        .nav-search {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            width: 400px;
+            height: 40px;
+            border-radius: 5px;
+            margin: 0 1rem;
+        }
+
+        .search-list {
+            background-color: #f3f3f3;
+            width: 40px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .search-input {
+            width: 100%;
+            font-size: larger;
+            border: none;
+        }
+
+        .search-icon {
+            width: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: larger;
+            color: #0f1111;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .nav-search:hover {
+            border: 2px solid orange;
+        }
+
+        h1 {
+            margin-top: 120px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 5rem; /* Increased font size */
+            color: antiquewhite;
+        }
+
+        .container {
+            margin: 0 auto; /* Center container horizontally */
+            max-width: 1200px; /* Set a maximum width for better control */
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center the items in the row */
+            gap: 80px; /* Add space between columns */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <a href="#" class="logo">
+                <img src="anshcafeimage.jpg" alt="Logo">
+            </a>
+            <nav class="navbar">
+                <a href="ansh cafe .html">Home</a>
+                <a href="about.html">About</a>
+                <a href="Menu.html">Menu</a>
+                <a href="product.html">Special Offer</a>
+                <a href="contact..html">Contact</a>
+                <a href="review.html">Review</a>
+                <a href="feedback">Blogs</a>
+            </nav>
+            <div class="nav-search">
+                <select class="search-list">
+                    <option>All</option>
+                </select>
+                <input placeholder="Search" class="search-input">
+                <div class="search-icon">
+                    <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+            <div class="icons">
+                <div class="fas fa-search" id="search-btn"></div>
+                <a href="cart.html">
+                    <div class="fas fa-shopping-cart" id="cart-btn"></div>
+                </a>
+                <div class="fas fa-bars" id="menu-btn"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="review" id="review">
+        <h1>Customer's Review</h1>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+                    <div class="box">
+                        <p>"Switching to organic foods has been amazing! The apples are sweeter, the veggies are fresher, and the meats are more flavorful. The quality is evident in every bite."</p>
+                        <img src="https://www.the-sun.com/wp-content/uploads/sites/6/2023/02/fears-eerily-realistic-ai-generated-796012871.jpg?w=1440" class="user" alt="">
+                        <h3>Jully</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="price">₹9.00 <span class="span">₹12.00</span></div>
+                        
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+                    <div class="box">
+                        <p>"The freshness of organic food is unbeatable. Every ingredient tastes like it’s just been picked. The switch to organic was the best decision for my family's health."</p>
+                        <img src="https://image.shutterstock.com/image-photo/surprised-cheerful-happy-african-american-260nw-2093992765.jpg" class="user" alt="">
+                        <h3>Robert</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="price">₹10.00 <span class="span">₹13.00</span></div>
+                        <div class="image">
+                            <!-- Add image if available -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+                    <div class="box">
+                        <p>"The difference in taste with organic products is undeniable. I love knowing my food is free from harmful chemicals. Plus, the flavor is so much richer!"</p>
+                        <img src="https://t3.ftcdn.net/jpg/02/28/94/22/360_F_228942236_F53W8OYRXcWguSwwhy2A0KmEJGtW4r2X.jpg" class="user" alt="">
+                        <h3>Jassie</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="price">₹11.00 <span class="span">₹14.00</span></div>
+                        <div class="image">
+                            <!-- Add image if available -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

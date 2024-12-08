@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+        body { 
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://wallpapercave.com/wp/wp1874166.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .contact-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .contact-right-title h1 {
+            font-weight: 600;
+            color: #f3eeeb;
+            font-size: 40px;
+            margin-bottom: 5px;
+        }
+
+        .contact-right-title hr {
+            border: none;
+            width: 120px;
+            height: 5px;
+            background-color: #000808;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .input {
+            width: 400px;
+            height: 50px;
+            border: none;
+            outline: none;
+            padding-left: 25px;
+            font-weight: 500;
+            color: #080808;
+            border-radius: 50px;
+        }
+
+        .contact-right textarea {
+            height: 140px;
+            padding-top: 15px;
+            border-radius: 20px;
+        }
+
+        .input:focus {
+            border: 2px solid rgb(0, 11, 11);
+        }
+
+        input::placeholder {
+            color: #131211;
+        }
+
+        .contact-right button {
+            display: flex;
+            align-items: center;
+            padding: 15px 30px;
+            font-size: 16px;
+            color: rgb(8, 8, 8);
+            gap: 10px;
+            border: none;
+            border-radius: 50px;
+            background-color: #ede9e9;
+            cursor: pointer;
+        }
+       
+
+        .contact-right img {
+            height: 15px;
+        }
+
+        .contact-left img {
+            width: 500px;
+            border-radius: 20px;
+        }
+
+        @media (max-width: 800px) {
+            .input {
+                width: 80vw;
+            }
+
+            .contact-left {
+                display: none;
+            }
+        }
+
+        .but {
+            text-align: center; 
+            margin-top: 20px; 
+        }
+
+        .but a button {
+            background-color: rgb(54, 172, 172);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            height: 50px; 
+            width: 120px; 
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: -20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .but a button:hover {
+            background-color: rgb(22, 207, 93);
+            color: rgb(246, 230, 13);
+        }
+    </style>
+</head>
+<body>
+    <div class="contact">
+        <div class="contact-left">
+           
+        </div>
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-right">
+            <div class="contact-right-title">
+                <h1>Contact  Form</h1>
+                <hr>
+            </div>
+            <input type="hidden" name="access_key" value="7f4c9a9f-cab3-480e-9d39-be4f3766120c">
+            <input type="text" name="name" placeholder="Your Name" class="input" required>
+            <input type="email" name="email" placeholder="Your Email" class="input" required>
+            <textarea name="message" placeholder="Your message" class="input" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+
+        <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3668.441574438273!2d79.94635477509594!3d23.154078379081753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981add8eb101a65%3A0xe3bf84c1e41ef4cc!2sIndian%20Coffee%20House!5e0!3m2!1sen!2sin!4v1725184388794!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+    </div>
+</body>
+</html>
